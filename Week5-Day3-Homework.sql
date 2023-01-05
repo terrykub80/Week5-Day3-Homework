@@ -1,3 +1,4 @@
+
 -- 1. List all customers who live in Texas (use JOINs)
 
 select c.first_name, c.last_name, a.district
@@ -20,8 +21,8 @@ where p.amount > 7;
 
 -- 3. Show all customer names who have made over $175 in payments (use subqueries)
 
-select *
-from customer c 
+select c.customer_id, c.first_name, c.last_name
+from customer c
 where customer_id in (
 	select customer_id
 	from payment
@@ -50,8 +51,10 @@ from city;
 
 -- 5. Show all the film categories with their count in descending order
 
-select *
-from film_category fc 
+select fc.category_id, count(fc.film_id)
+from film_category fc
+group by fc.category_id
+order by count(fc.film_id) desc;
 
 
 
