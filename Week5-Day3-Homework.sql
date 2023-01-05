@@ -51,10 +51,12 @@ from city;
 
 -- 5. Show all the film categories with their count in descending order
 
-select fc.category_id, count(fc.film_id)
+select fc.category_id, c.name, count(fc.category_id)
 from film_category fc
-group by fc.category_id
-order by count(fc.film_id) desc;
+join category c 
+on fc.category_id = c.category_id 
+group by fc.category_id, c.name 
+order by count(fc.category_id) desc;
 
 
 
